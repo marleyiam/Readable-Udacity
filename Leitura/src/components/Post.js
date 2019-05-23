@@ -18,7 +18,12 @@ class Post extends Component {
           <div className='post-info'>
             <div>
               <span>
-                <Link to={`/${post.id}`}>
+                <Link to={{
+                  pathname:`/${post.category}/${post.id}`,
+                  state: {
+                    post: post
+                  }
+                }}>
                   {post.title}
                 </Link>
               </span>
@@ -26,7 +31,7 @@ class Post extends Component {
                 {
                   <span className='published-at'>
                     <strong>Publicado em: </strong>
-                    {formatDate(post.timestamp)} na categoria <i><u><Link to={`/category/${post.category}`}>{post.category}</Link></u></i>
+                    {formatDate(post.timestamp)} na categoria <i><u><Link to={`/${post.category}`}>{post.category}</Link></u></i>
                   </span> 
                 }
                 <p>

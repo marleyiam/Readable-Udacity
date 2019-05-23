@@ -36,11 +36,13 @@ export default function postsReducer(state = initialState, action) {
       }
     case ADD_POST:
       return {
-        post: action.post
+        post: action.post,
+        posts: [...state.posts, action.post]
       };
     case GET_POST:
       return {
-        post: action.post
+        post: action.post,
+        posts: state.posts
       };
     case VOTE_POST:
       if (state.posts)
@@ -54,11 +56,13 @@ export default function postsReducer(state = initialState, action) {
       }
     case EDIT_POST:
       return {
-        post: action.post
+        post: action.post,
+        posts: [...state.posts, action.post]
       };
     case DELETE_POST:
       return {
-        post: action.post
+        post: action.post,
+        posts: [...state.posts, action.post]
       };
     default:
       return state;

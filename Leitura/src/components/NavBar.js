@@ -19,7 +19,7 @@ class Navbar extends Component {
     this
       .props
       .history
-      .push(`/category/${categoryPath}`);
+      .push(`/${categoryPath}`);
   };
 
   render() {

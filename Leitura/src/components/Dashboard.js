@@ -50,7 +50,7 @@ class Dashboard extends Component {
               posts && posts.map(post => {
                 return (
                   <li key={post.id}>
-                    <Post 
+                    <Post
                       post={post}
                       onVoteUp={() => this.onVoteUp(post)}
                       onVoteDown={() => this.onVoteDown(post)}

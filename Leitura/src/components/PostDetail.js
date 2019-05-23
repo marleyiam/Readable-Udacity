@@ -42,6 +42,7 @@ import {
 import CommentForm from './CommentForm';
 import PostForm from './PostForm';
 import Comments from './Comments';
+import Page404 from './Page404';
 
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
@@ -130,11 +131,16 @@ class PostDetails extends Component {
   }
 
   render() {
-    
-    const { post, comments, categories } = this.props;
 
-    return ( 
-      !post? null :
+    const { comments, categories } = this.props;
+    
+    const post = this.props.location.state? this.props.location.state.post: 
+    this.props.post? this.props.post: false;
+    const error = post && post.error? post.error: false;
+
+    return (
+      !post? <Page404/> :
+      error? <Page404/> :
       <div className='container-post-detail-box'>
         <div className='box header'>Projeto Leitura</div>
         <div className='box horizon'>
@@ -231,6 +237,7 @@ class PostDetails extends Component {
 
 const mapStateToProps = ({ postsReducer, commentsReducer, categoriesReducer }) => {
   return {
+    posts: postsReducer.posts,
     post: postsReducer.post,
     comments: commentsReducer.comments.sort((a, b) => b.timestamp - a.timestamp),
     categories: categoriesReducer.categories 
